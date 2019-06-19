@@ -28,3 +28,10 @@ Route::get('/logout', 'SuperAdminController@logout');
 Route::get('/admin', 'AdminController@index');
 Route::get('/dashboard', 'AdminController@showDashboard');
 Route::post('/admin-dashboard', 'AdminController@dashboard');
+
+
+
+
+//Category
+
+Route::get('/add-category', 'CategoryController@index');
