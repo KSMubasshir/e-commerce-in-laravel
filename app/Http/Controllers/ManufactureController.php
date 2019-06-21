@@ -37,7 +37,47 @@ class ManufactureController extends Controller
     	DB::table('tbl_manufacture')
     	    ->where('manufacture_id',$manufacture_id)
     	    ->delete();
-    	Session::get('message','manufacture Deleted successfully! ');
+    	Session::get('message','Manufacture Deleted successfully! ');
     	return Redirect::to('/all-manufacture');    
+    }
+    public function inactive_manufacture($manufacture_id)
+    {
+          DB::table('tbl_manufacture')
+              ->where('manufacture_id',$manufacture_id)
+              ->update(['publication_status' => 0]);
+          Session::put('message','Manufacure Inactived successfully !! ');
+              return Redirect::to('/all-manufacture');
+    }
+    public function active_manufacture($manufacture_id)
+    {
+          DB::table('tbl_manufacture')
+              ->where('manufacture_id',$manufacture_id)
+              ->update(['publication_status' => 1]);
+          Session::put('message','Manufacture Activated successfully !! ');
+              return Redirect::to('/all-manufacture');
+    }
+    public function edit_manufacture($manufacture_id)
+    {
+         $manufacture_info=DB::table('tbl_manufacture')
+		                 ->where('manufacture_id',$manufacture_id)
+		                 ->first();
+
+       $manufacture_info=view('admin.edit_manufacture')
+           ->with('manufacture_info',$manufacture_info);
+       return view('pages.adminLayout')
+           ->with('admin.edit_manufacture',$manufacture_info);
+    }
+    public function update_manufacture(Request $request,$manufacture_id)
+    {
+         $data=array();
+         $data['manufacture_name']=$request->manufacture_name;
+         $data['manufacture_description']=$request->manufacture_description;
+        
+         DB::table('tbl_manufacture')
+             ->where('manufacture_id',$manufacture_id)
+             ->update($data);
+
+             Session::get('message','Manufacture update successfully !');
+             return Redirect::to('/all-manufacture');
     }
 }
