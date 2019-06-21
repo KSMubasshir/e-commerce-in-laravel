@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('layout')
 @section('content')
 
 <h2 class="title text-center">Features Items</h2>
