@@ -51,13 +51,13 @@
 							@if($v_product->publication_status==1)
 							<span class="label label-success">Active</span>
 							@else
-                                <span class="label label-danger">Unactive</span>
+                                <span class="label label-danger">Inactive</span>
 							@endif
 						</td>
 
 						<td class="center">
                             @if($v_product->publication_status==1)
-							<a class="btn btn-danger" href="{{URL::to('/unactive_product/'.$v_product->product_id)}}">
+							<a class="btn btn-danger" href="{{URL::to('/inactive_product/'.$v_product->product_id)}}">
 								<i class="halflings-icon white thumbs-down"></i>  
 							</a>
                             @else

@@ -84,12 +84,12 @@ class ProductController extends Controller
 
    }
 
-   public function unactive_product($product_id)
+   public function inactive_product($product_id)
    {
          DB::table('tbl_products')
               ->where('product_id',$product_id)
               ->update(['publication_status' => 0]);
-          Session::put('message','Product Unactive successfully !! ');
+          Session::put('message','Product Inactived successfully !! ');
               return Redirect::to('/all-product');
    }
 
@@ -98,7 +98,7 @@ class ProductController extends Controller
          DB::table('tbl_products')
               ->where('product_id',$product_id)
               ->update(['publication_status' => 1]);
-          Session::put('message','Product Active successfully !! ');
+          Session::put('message','Product Actived successfully !! ');
               return Redirect::to('/all-product');
    }
 
