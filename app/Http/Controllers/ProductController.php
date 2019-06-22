@@ -31,20 +31,15 @@ class ProductController extends Controller
 
 	public function all_product()
 	 {
-	   $this->AdminAuthCheck();
+	   //$this->AdminAuthCheck();
        $all_product_info=DB::table('tbl_products')
                      ->join('tbl_category','tbl_products.category_id','=','tbl_category.category_id')
                      ->join('tbl_manufacture','tbl_products.manufacture_id','=','tbl_manufacture.manufacture_id')
                      ->select('tbl_products.*','tbl_category.category_name','tbl_manufacture.manufacture_name')
                      ->get();
-                  
-   //   echo "<pre>";
-   // print_r($all_product_info);
-   //   echo "</pre>";
-   //   exit();
        $manage_product=view('admin.all_product')
                ->with('all_product_info',$all_product_info);
-       return view('admin_layout')
+       return view('pages.adminLayout')
                ->with('admin.all_product',$manage_product); 
                        
 	 }
