@@ -68,10 +68,10 @@ class HomeController extends Controller
                      ->where('tbl_products.product_id',$product_id)
                      ->where('tbl_products.publication_status', 1)
                      ->first();
-       $manage_product_by_details=view('pages.product_details')
+       $manage_product_by_details=view('pages.product_by_details')
                ->with('product_by_details',$product_by_details);
        return view('layout')
-               ->with('pages.product_details',$manage_product_by_details); 
+               ->with('pages.product_by_details',$manage_product_by_details); 
   }
 
 
