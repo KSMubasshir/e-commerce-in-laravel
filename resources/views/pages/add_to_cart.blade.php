@@ -43,7 +43,7 @@
 									{{ csrf_field()}}
 									<input class="cart_quantity_input" type="text" name="qty" value="{{$v_contents->qty}}" autocomplete="off" size="2">
 									<input  type="hidden" name="rowId" value="{{$v_contents->rowId}}"  >
-									<input type="submit" name="submit" value="update" class="btn btn-sm btn-default">
+									<input type="submit" name="submit" value="Update" class="btn btn-sm btn-default update">
 								</form>
 							</div>
 							</td>
@@ -81,10 +81,10 @@
 							<a class="btn btn-default update" href="">Update</a><br>
                        <?php $customer_id=Session::get('customer_id'); ?>
                        <?php if($customer_id != NULL){?>
-                          <li><a href="{{URL::to('/checkout')}}"><i class="btn btn-default"> Checkout</i></a>
+                          <li><a href="{{URL::to('/checkout')}}"><i class="btn btn-default check_out">Checkout</i></a>
                           </li>
                       <?php  }else{?>
-                             <li><a class="btn btn-default check_out" href="{{URL::to('/login-check')}}">Check Out</a></li>
+                             <li><a class="btn btn-default check_out" href="{{URL::to('/login-check')}}">Checkout</a></li>
                         <?php } ?>
 
 					</div>
