@@ -122,22 +122,15 @@ class CheckoutController extends Controller
      }
 
      if ($payment_gateway=='handcash') {
-          
-           Cart::destroy();
+          Cart::destroy();
           return view('pages.handcash');
-         
-        
      }elseif ($payment_gateway=='cart') {
-   
-      echo "cart";
-      
+          echo "cart";
      }elseif($payment_gateway=='paypal'){
-
-         echo "paypal";
+          echo "paypal";
      }else{
-      echo "not selectd";
+          echo "not selectd";
      }
-
 
     }
 
