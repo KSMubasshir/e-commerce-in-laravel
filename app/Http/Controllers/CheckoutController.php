@@ -144,7 +144,7 @@ class CheckoutController extends Controller
 
        $manage_order=view('admin.manage_order')
                ->with('all_order_info',$all_order_info);
-       return view('admin_layout')
+       return view('pages.adminLayout')
                ->with('admin.manage_order',$manage_order); 
 
     }
@@ -161,7 +161,7 @@ class CheckoutController extends Controller
 
        $view_order=view('admin.view_order')
                ->with('order_by_id',$order_by_id);
-       return view('admin_layout')
+       return view('pages.adminLayout')
                ->with('admin.view_order',$view_order); 
 
                      // echo "<pre>";

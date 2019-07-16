@@ -35,6 +35,8 @@ Route::get('/customer_logout','CheckoutController@customer_logout');
 Route::get('/payment','CheckoutController@payment');
 Route::post('/order-place','CheckoutController@order_place');
 
+Route::get('/manage-order','CheckoutController@manage_order');
+Route::get('/view-order/{order_id}','CheckoutController@view_order');
 
 
 
