@@ -9,10 +9,19 @@ session_start();
 
 class SuperAdminController extends Controller
 {
-	public function index()
+	  public function index()
     {
     	$this->AdminAuthCheck();
     	return view('admin.dashboard');
+    }
+    public function deliveryManIndex()
+    {
+      $this->deliveryManAuthCheck();
+      return view('pages.deliveryManDashboard');
+    }
+    public function deliveryManlogout(){
+        Session::flush();
+        return Redirect::to('/deliveryMan');
     }
     public function logout(){
         Session::flush();
@@ -28,5 +37,14 @@ class SuperAdminController extends Controller
          return Redirect::to('/admin')->send();
       }
     }
-
+    public function deliveryManAuthCheck()
+    {
+      $deliveryMan_id=Session::get('deliveryMan_id');
+      
+      if ($deliveryMan_id) {
+         return;
+      }else{
+         return Redirect::to('/deliveryMan')->send();
+      }
+    }
 }

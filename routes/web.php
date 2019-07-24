@@ -32,6 +32,8 @@ Route::post('/save-shipping-details','CheckoutController@save_shipping_details')
 Route::post('/customer_login','CheckoutController@customer_login');
 Route::get('/customer_logout','CheckoutController@customer_logout');
 
+Route::get('/customer-profile','CustomerController@index');
+
 Route::get('/payment','CheckoutController@payment');
 Route::post('/order-place','CheckoutController@order_place');
 
@@ -46,6 +48,22 @@ Route::get('/logout', 'SuperAdminController@logout');
 Route::get('/admin', 'AdminController@index');
 Route::get('/dashboard', 'SuperAdminController@index');
 Route::post('/admin-dashboard', 'AdminController@dashboard');
+
+
+
+//delivery man routes
+Route::get('/deliveryMan', 'DeliveryManController@index');
+Route::post('/deliveryMan-dashboard', 'DeliveryManController@dashboard');
+Route::get('/deliveryManDashboard', 'SuperAdminController@deliveryManIndex');
+Route::get('/deliveryManlogout', 'SuperAdminController@deliveryManlogout');
+Route::get('/deliveryManOrders', 'DeliveryManController@myOrders');
+Route::get('/deliveryManDeliverdOrders', 'DeliveryManController@myDeliveredOrders');
+Route::get('/inactive-delivery/{order_id}', 'DeliveryManController@inactive_delivery');
+Route::get('/active-delivery/{order_id}', 'DeliveryManController@active_delivery');
+Route::get('/view-delivery/{order_id}', 'DeliveryManController@view_delivery');
+Route::get('/delete-delivery/{order_id}', 'DeliveryManController@delete_delivery');
+
+
 
 
 
@@ -87,5 +105,10 @@ Route::get('/all-slider','SliderController@all_slider');
 Route::get('/unactive-slider/{slider_id}','SliderController@unactive_slider');
 Route::get('/active-slider/{slider_id}','SliderController@active_slider');
 Route::get('/delete-slider/{slider_id}','SliderController@delete_slider');
+
+//order routes are here
+Route::get('/inactive-order/{order_id}','OrderController@inactive_order');
+Route::get('/active-order/{order_id}','OrderController@active_order');
+
 
 
