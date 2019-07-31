@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use Illuminate\Support\Facades\Input;
 class HomeController extends Controller
 {
-	
+	 
     public function index()
     {
       $all_published_product=DB::table('tbl_products')
@@ -23,6 +24,36 @@ class HomeController extends Controller
                ->with('pages.homecontent',$manage_published_product); 
            //return view('pages.home_content');
     }
+
+    public function show_product_by_search()
+    {
+        $q = Input::get('q');
+        if($q!= "" ){
+                  $searched_product=DB::table('tbl_products')
+                             ->join('tbl_category','tbl_products.category_id','=','tbl_category.category_id')
+                             ->join('tbl_manufacture','tbl_products.manufacture_id','=','tbl_manufacture.manufacture_id')
+                             ->select('tbl_products.*','tbl_category.category_name','tbl_manufacture.manufacture_name')
+                             ->where('category_name','LIKE','%' . $q . '%')
+                             ->orWhere('manufacture_name','LIKE','%' . $q . '%')
+                             ->orWhere('product_name','LIKE','%' . $q . '%')
+                             ->get();
+                 if(count($searched_product) > 0){
+                             $manage_product=view('pages.product_by_search')
+                                     ->with('searched_product',$searched_product);
+                             return view('layout')
+                                    ->with('pages.product_by_search',$manage_product);
+                 }
+                 else
+                 {
+                            echo "no product of your search";
+                            //todo
+                 }
+        }
+        else{
+                          echo "no product of your search";
+                          //todo
+        }
+  }
 
   public function show_product_by_category($category_id)
   {

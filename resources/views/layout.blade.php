@@ -159,9 +159,18 @@
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
-						</div>
+						<form action="/search" method="POST" role="search">
+							{{ csrf_field() }}
+							<div class="input-group">
+								<input type="text" class="form-control" name="q" placeholder="Search"> 
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-default">
+										<span class="glyphicon glyphicon-search">
+										</span>
+									</button>
+								</span>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
