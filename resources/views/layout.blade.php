@@ -32,8 +32,8 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+								<li><a href="#"><i class="fa fa-phone"></i> 02 95 88 821</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> achilis@gamil.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -57,28 +57,27 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="{{URL::to('frontend/images/home/logo.png')}}" alt="" /></a>
+							<a href="{{URL::to('/')}}"><img src="{{URL::to('frontend/images/home/logo.png')}}" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
 							<div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
+									Dhaka
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
+									<li><a href="#">Chattogram</a></li>
+									<li><a href="#">Sylhet</a></li>
 								</ul>
 							</div>
 							
 							<div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
+									BDT
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
+									
 								</ul>
 							</div>
 						</div>
@@ -132,28 +131,7 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li> 
-                                       <?php $customer_id=Session::get('customer_id'); ?>
-	                 					<?php if($customer_id != NULL){?>
-	                            		<li><a href="{{URL::to('/checkout')}}"> Checkout</a></li>
-	                      				<?php  }else{?>
-	                             		<li><a href="{{URL::to('/login-check')}}"> Checkout</a></li>
-	                        			<?php } ?>
-	                                    <li><a href="{{URL::to('/show-cart')}}">Cart</a></li> 
-                                        
-                                    </ul>
-                                </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> 
-								<li><a href="404.html">404</a></li>
+								<li><a href="{{URL::to('/')}}" class="active">Home</a></li>
 								<li><a href="contact-us.html">Contact</a></li>
 							</ul>
 						</div>
@@ -194,7 +172,6 @@
 									<h1>Achilis</h1>
 									<h2>E-Commerce Platform</h2>
 									<p>A common platform for Producers,Providers and Customers</p>
-									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
 									<img src="{{asset('frontend/images/home/girl1.jpg')}}" class="girl img-responsive" alt="" />
@@ -204,18 +181,14 @@
 							<div class="item">
 								<div class="col-sm-6">
 									<h1>Achilis</h1>
-									<h2>100% Responsive Design</h2>
+									<h2>E-Commerce Platform</h2>
 									<p>A common platform for Producers,Providers and Customers. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
 									<img src="{{asset('frontend/images/home/girl2.jpg')}}" class="girl img-responsive" alt="" />
 									<img src="{{asset('frontend/images/home/pricing.png')}}"  class="pricing" alt="" />
 								</div>
 							</div>
-							
-							
-							
 						</div>
 						
 						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
@@ -265,8 +238,7 @@
 														->where('publication_status',1)
 														->get();
 									foreach($all_published_manufacture as $v_manufacture){?> 
-
-											<li><a href="{{URL::to('/product_by_manufacture/'.$v_manufacture->manufacture_id)}}"> <span class="pull-right">(50)</span>{{$v_manufacture->manufacture_name}}</a></li>
+											<li><a href="{{URL::to('/product_by_manufacture/'.$v_manufacture->manufacture_id)}}"> <span class="pull-right">(5)</span>{{$v_manufacture->manufacture_name}}</a></li>
 								<?php } ?>   
 							</ul>
 							</div>
@@ -303,7 +275,7 @@
 					<div class="col-sm-2">
 						<div class="companyinfo">
 							<h2>Achilis</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+							<p>E-Commerce Platform</p>
 						</div>
 					</div>
 					<div class="col-sm-7">
@@ -394,7 +366,7 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2>Quock Shop</h2>
+							<h2>Quick Shop</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="#">T-Shirt</a></li>
 								<li><a href="#">Mens</a></li>

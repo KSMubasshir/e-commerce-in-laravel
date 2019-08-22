@@ -55,6 +55,40 @@ class HomeController extends Controller
         }
   }
 
+
+  public function show_product_by_price_range()
+    {
+        $q = Input::get('q');
+        if($q!= "" ){
+                  $searched_product=DB::table('tbl_products')
+                             ->join('tbl_category','tbl_products.category_id','=','tbl_category.category_id')
+                             ->join('tbl_manufacture','tbl_products.manufacture_id','=','tbl_manufacture.manufacture_id')
+                             ->select('tbl_products.*','tbl_category.category_name','tbl_manufacture.manufacture_name')
+                             ->where('category_name','LIKE','%' . $q . '%')
+                             ->orWhere('manufacture_name','LIKE','%' . $q . '%')
+                             ->orWhere('product_name','LIKE','%' . $q . '%')
+                             ->get();
+                 if(count($searched_product) > 0){
+                             $manage_product=view('pages.product_by_search')
+                                     ->with('searched_product',$searched_product);
+                             return view('layout')
+                                    ->with('pages.product_by_search',$manage_product);
+                 }
+                 else
+                 {
+                            echo "no product of your search";
+                            //todo
+                 }
+        }
+        else{
+                          echo "no product of your search";
+                          //todo
+        }
+  }
+
+
+  //where('price', 'BETWEEN', $min_price, 'AND', $max_price)
+
   public function show_product_by_category($category_id)
   {
      $product_by_category=DB::table('tbl_products')
