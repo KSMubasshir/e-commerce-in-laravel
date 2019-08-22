@@ -6,7 +6,7 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>Metro Admin Template - Metro UI Style Bootstrap Admin Template</title>
+	<title>Admin</title>
 	<meta name="description" content="Metro Admin Template.">
 	<meta name="author" content="Łukasz Holeczek">
 	<meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
@@ -226,7 +226,7 @@
 										    </span>
 										</span>
                                         <span class="message">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                            Hi Achilis.
                                         </span>  
                                     </a>
                                 </li>
@@ -242,7 +242,7 @@
 										    </span>
 										</span>
                                         <span class="message">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                            Hi Achilis.
                                         </span>  
                                     </a>
                                 </li>
@@ -258,7 +258,7 @@
 										    </span>
 										</span>
                                         <span class="message">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                            Hi Achilis.
                                         </span>  
                                     </a>
                                 </li>
@@ -274,7 +274,7 @@
 										    </span>
 										</span>
                                         <span class="message">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                            Hi Achilis.
                                         </span>  
                                     </a>
                                 </li>
@@ -290,7 +290,7 @@
 										    </span>
 										</span>
                                         <span class="message">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                            Hey
                                         </span>  
                                     </a>
                                 </li>
@@ -336,8 +336,7 @@
 			<!-- start: Main Menu -->
 			<div id="sidebar-left" class="span2">
 				<div class="nav-collapse sidebar-nav">
-					<ul class="nav nav-tabs nav-stacked main-menu">
-						<li><a href="{{URL::to('/dashboard')}}"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>	
+					<ul class="nav nav-tabs nav-stacked main-menu">	
 						<li><a href="{{URL::to('/all-category')}}"><i class="icon-envelope"></i><span class="hidden-tablet"> All Category</span></a></li>
 						<li><a href="{{URL::to('/add-category')}}"><i class="icon-tasks"></i><span class="hidden-tablet"> Add Category</span></a></li>
 						<li><a href="{{URL::to('/all-manufacture')}}"><i class="icon-eye-open"></i><span class="hidden-tablet"> All Manufactures</span></a></li>

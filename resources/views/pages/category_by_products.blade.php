@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<h2 class="title text-center">Features Items</h2>
+<h2 class="title text-center">Featured Items</h2>
      <?php foreach($product_by_category as $v_category_by_product){?>
         <div class="col-sm-4">
             <div class="product-image-wrapper">
