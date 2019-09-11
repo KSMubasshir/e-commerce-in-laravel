@@ -25,6 +25,11 @@ class HomeController extends Controller
            //return view('pages.home_content');
     }
 
+    public function contactus()
+    {
+        return view('admin.dashboard');
+    }
+
     public function show_product_by_search()
     {
         $q = Input::get('q');

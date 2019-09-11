@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
+use Auth;
 use Session;
 use Cart;
 use Illuminate\Support\Facades\Redirect;
@@ -34,7 +35,10 @@ class CheckoutController extends Controller
 
     public function checkout()
     {
-    	
+      
+    	$result=DB::table('tbl_customer')
+              ->where('customer_id',"1")
+              ->first();
       return view('pages.checkout');
 
 
@@ -146,6 +150,24 @@ class CheckoutController extends Controller
                ->with('all_order_info',$all_order_info);
        return view('pages.adminLayout')
                ->with('admin.manage_order',$manage_order); 
+
+    }
+    public function new_order()
+    {
+     
+      $all_order_info=DB::table('tbl_order')
+                     ->join('tbl_customer','tbl_order.customer_id','=','tbl_customer.customer_id')
+                     ->select('tbl_order.*','tbl_customer.customer_name')
+                     ->where('tbl_order.seen',"0")
+                     ->get();
+     DB::table('tbl_order')
+            ->where('seen',"0")
+            ->update(['seen'=>'1']);
+
+       $new_order=view('admin.new_order')
+               ->with('all_order_info',$all_order_info);
+       return view('pages.adminLayout')
+               ->with('admin.new_order',$new_order); 
 
     }
 

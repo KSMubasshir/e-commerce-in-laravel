@@ -12,6 +12,7 @@
 */
 //FrontEnd Site
 Route::get('/', 'HomeController@index');
+Route::get('/contactus', 'HomeController@contactus');
 
 
 //search products
@@ -41,6 +42,7 @@ Route::get('/payment','CheckoutController@payment');
 Route::post('/order-place','CheckoutController@order_place');
 
 Route::get('/manage-order','CheckoutController@manage_order');
+Route::get('/new-order','CheckoutController@new_order');
 Route::get('/view-order/{order_id}','CheckoutController@view_order');
 
 

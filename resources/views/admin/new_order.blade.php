@@ -1,9 +1,10 @@
-@extends('pages.deliveryManLayout')
-@section('deliveryManContent')
+@extends('pages.adminLayout')
+@section('adminContent')
 <ul class="breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="{{URL::to('/deliveryMan-dashboard')}}">Home</a> 
+				<a href="index.html">Home</a> 
+				<i class="icon-angle-right"></i>
 			</li>
 			<li><a href="#">Order Details</a></li>
 		</ul>
@@ -42,16 +43,29 @@
 						<td class="center">{{$v_order->order_total}}</td>
                         <td class="center">{{ $v_order->order_status }}</td>
 						{{-- <td class="center">
+							@if($v_order->order_status== 'Pending' )
 							<span class="label label-success">Active</span>
+							@else
+                                <span class="label label-danger">Unactive</span>
+							@endif
 						</td> --}}
 
 						<td class="center">
-							<a class="btn btn-success" href="{{URL::to('/active-delivery/'.$v_order->order_id)}}">
+							@if($v_order->order_status== 'Pending' )
+							<a class="btn btn-success" href="{{URL::to('/active-order/'.$v_order->order_id)}}">
 								<i class="halflings-icon white thumbs-up"></i>  
 							</a>
+                           @else
+							<a class="btn btn-danger" href="{{URL::to('/inactive-order/'.$v_order->order_id)}}">
+								<i class="halflings-icon white thumbs-down"></i>  
+							</a>
+                           @endif
 
-							<a class="btn btn-info" href="{{URL::to('/view-delivery/'.$v_order->order_id)}}">
+							<a class="btn btn-info" href="{{URL::to('/view-order/'.$v_order->order_id)}}">
 								<i class="halflings-icon white edit"></i>  
+							</a>
+							<a class="btn btn-danger" href="{{URL::to('/delete/'.$v_order->order_id)}}" id="delete">
+								<i class="halflings-icon white trash"></i> 
 							</a>
 						</td>
 						</tr>				

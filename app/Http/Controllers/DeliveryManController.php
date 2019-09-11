@@ -98,12 +98,5 @@ class DeliveryManController extends Controller
        return view('pages.deliveryManLayout')
                ->with('pages..view_delivery',$view_order); 
   }
-   public function delete_delivery($order_id){
-            DB::table('tbl_order')
-            ->where('order_id',$order_id)
-            ->delete();
-            Session::put('message','Deilvery Deleted Successfully!');
-            return Redirect::to('deliveryManOrders');
-  }
 
 }

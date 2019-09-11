@@ -132,7 +132,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="{{URL::to('/')}}" class="active">Home</a></li>
-								<li><a href="contact-us.html">Contact</a></li>
+								<li><a href="{{URL::to('/contactus')}}">Contact</a></li>
 							</ul>
 						</div>
 					</div>

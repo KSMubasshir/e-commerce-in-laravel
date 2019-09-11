@@ -34,6 +34,8 @@
 							  <th>Product price</th>
 							  <th>category Name</th>
 							  <th>manufactue Name</th>
+							  <th>Quantity</th>
+							  <th>Avilability</th>
 							  <th>Status</th>
 							  <th>Actions</th>
 						  </tr>
@@ -47,6 +49,8 @@
                         <td class="center">{{ $v_product->product_price }} Tk</td>
                         <td class="center">{{ $v_product->category_name }}</td>
                         <td class="center">{{ $v_product->manufacture_name }}</td>
+                        <td class="center">{{ $v_product->product_quantity }}</td>
+                        <td class="center">{{ $v_product->product_available }}</td>
 						<td class="center">
 							@if($v_product->publication_status==1)
 							<span class="label label-success">Active</span>

@@ -107,6 +107,12 @@
 					<input type="text" class="input-xlarge" name="product_color" required="">
 				  </div>
 				</div>
+				<div class="control-group">
+				  <label class="control-label" for="date01">Product Quantity</label>
+				  <div class="controls">
+					<input type="text" class="input-xlarge" name="product_quantity" required="">
+				  </div>
+				</div>
 				<div class="control-group hidden-phone">
 				  <label class="control-label" for="textarea2">Publication status  </label>
 				  <div class="controls">

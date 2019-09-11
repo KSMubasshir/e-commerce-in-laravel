@@ -55,6 +55,7 @@ class ProductController extends Controller
         $data['product_price']=$request->product_price;
         $data['product_size']=$request->product_size;
         $data['product_color']=$request->product_color;
+        $data['product_quantity']=$request->product_quantity;
         $data['publication_status']=$request->publication_status;     
         $image=$request->file('product_image');
     if ($image) {
