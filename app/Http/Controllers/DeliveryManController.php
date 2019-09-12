@@ -99,4 +99,6 @@ class DeliveryManController extends Controller
                ->with('pages..view_delivery',$view_order); 
   }
 
+  
+
 }

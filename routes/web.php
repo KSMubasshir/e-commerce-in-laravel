@@ -67,10 +67,12 @@ Route::get('/inactive-delivery/{order_id}', 'DeliveryManController@inactive_deli
 Route::get('/active-delivery/{order_id}', 'DeliveryManController@active_delivery');
 Route::get('/view-delivery/{order_id}', 'DeliveryManController@view_delivery');
 Route::get('/delete-delivery/{order_id}', 'DeliveryManController@delete_delivery');
-
-
-
-
+Route::get('/add-DeliveryMan', 'DeliveryManController@add_DeliveryMan');
+Route::get('/all-DeliveryMan', 'DeliveryManController@all_DeliveryMan');
+Route::post('/save-DeliveryMan', 'DeliveryManController@save_DeliveryMan');
+Route::get('/edit-DeliveryMan/{DeliveryMan_id}', 'DeliveryManController@edit_DeliveryMan');
+Route::get('/delete-DeliveryMan/{DeliveryMan_id}', 'DeliveryManController@delete_DeliveryMan');
+Route::post('/update-DeliveryMan/{DeliveryMan_id}', 'DeliveryManController@update_DeliveryMan');
 
 
 //Category
@@ -114,6 +116,8 @@ Route::get('/delete-slider/{slider_id}','SliderController@delete_slider');
 //order routes are here
 Route::get('/inactive-order/{order_id}','OrderController@inactive_order');
 Route::get('/active-order/{order_id}','OrderController@active_order');
+
+
 
 
 

@@ -342,7 +342,7 @@
 						<li><a href="{{URL::to('/all-manufacture')}}"><i class="icon-eye-open"></i><span class="hidden-tablet"> All Manufactures</span></a></li>
 						<li><a href="{{URL::to('/add-manufacture')}}"><i class="icon-dashboard"></i><span class="hidden-tablet"> Add Manufacture</span></a></li>
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Products</span><span class="label label-important"> New </span></a>
+							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Products</span>
 							<ul>
 								<li><a class="submenu" href="{{URL::to('/all-product')}}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Products</span></a></li>
 								<li><a class="submenu" href="{{URL::to('/add-product')}}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Product</span></a></li>
@@ -352,9 +352,14 @@
 						<li><a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Social Link</span></a></li>
 
 						<li><a href="{{URL::to('/manage-order')}}"><i class="icon-list-alt"></i><span class="hidden-tablet"> Manage Order</span></a></li>
-						<li><a href="{{URL::to('/new-order')}}"><i class="icon-list-alt"></i><span class="hidden-tablet"> New Order</span></a></li>
-						<li><a href="typography.html"><i class="icon-font"></i><span class="hidden-tablet"> Shop Name</span></a></li>
-						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Delivery Man</span></a></li>
+						<li><a href="{{URL::to('/new-order')}}"><i class="icon-list-alt"></i><span class="hidden-tablet"> New Order</span><span class="label label-important"> New </span></a></a></li>
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Delivery Man</span>
+							<ul>
+								<li><a class="submenu" href="{{URL::to('/all-DeliveryMan')}}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Delivery Man</span></a></li>
+								<li><a class="submenu" href="{{URL::to('/add-DeliveryMan')}}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Delivery Man</span></a></li>
+							</ul>	
+						</li>
 					</ul>
 				</div>
 			</div>
