@@ -99,6 +99,80 @@ class DeliveryManController extends Controller
                ->with('pages..view_delivery',$view_order); 
   }
 
-  
+  public function all_DeliveryMan(){
+        $all_DeliveryMan_info = DB::table('tbl_deliveryMan')->get();
+        $manage_DeliveryMan = view('admin.all_deliveryMan')
+            ->with('all_DeliveryMan_info',$all_DeliveryMan_info);
+        return view('pages.adminLayout')
+            ->with('admin.all_deliveryMan',$manage_DeliveryMan);
+    }
+    public function add_deliveryMan(){
+        return view('admin.add_deliveryMan');
+    }
+    public function save_DeliveryMan(Request $request)
+   {
+      $data=array();
+        $data['deliveryMan_name']=$request->deliveryMan_name;
+        $data['deliveryMan_address']=$request->deliveryMan_address;
+        $data['deliveryMan_contactno']=$request->deliveryMan_contactno;
+        $image=$request->file('deliveryMan_image');
+        $data['deliveryMan_email']=$request->deliveryMan_email;
+        $data['deliveryMan_password']=md5($request->deliveryMan_password);
+    if ($image) {
+       $image_name=str_random(20);
+       $ext=strtolower($image->getClientOriginalExtension());
+       $image_full_name=$image_name.'.'.$ext;
+       $upload_path='image/';
+       $image_url=$upload_path.$image_full_name;
+       $success=$image->move($upload_path,$image_full_name);
+       if ($success) {
+         $data['deliveryMan_image']=$image_url;
+            DB::table('tbl_deliveryMan')->insert($data);
+            Session::put('message','Delivery Man added successfully!!');
+            return Redirect::to('/add-DeliveryMan');
+       }
+    }
+    $data['deliveryMan_image']='';
+            DB::table('tbl_deliveryMan')->insert($data);
+            Session::put('message','Delivery Man added successfully without image!!');
+            return Redirect::to('/add-deliveryMan');
+   }
+   public function delete_DeliveryMan($deliveryMan_id)
+    {
+      DB::table('tbl_deliveryMan')
+          ->where('deliveryMan_id',$deliveryMan_id)
+          ->delete();
+      Session::get('message','Delivery Man Deleted successfully! ');
+      return Redirect::to('/all-DeliveryMan');    
+    }
+    public function edit_DeliveryMan($deliveryMan_id)
+    {
+        $deliveryMan_info=DB::table('tbl_deliveryMan')
+                   ->where('deliveryMan_id',$deliveryMan_id)
+                   ->first();
+
+       $deliveryMan_info=view('admin.edit_DeliveryMan')
+           ->with('deliveryMan_info',$deliveryMan_info);
+       return view('pages.adminLayout')
+           ->with('admin.edit_DeliveryMan',$deliveryMan_info);
+    }
+
+    public function update_DeliveryMan(Request $request,$deliveryMan_id)
+    {
+        $data=array();
+        $data['deliveryMan_name']=$request->deliveryMan_name;
+        $data['deliveryMan_address']=$request->deliveryMan_address;
+        $data['deliveryMan_contactno']=$request->deliveryMan_contactno;
+        $data['deliveryMan_email']=$request->deliveryMan_email;
+        $data['deliveryMan_password']=md5($request->deliveryMan_password);
+       
+        
+        DB::table('tbl_deliveryMan')
+           ->where('deliveryMan_id',$deliveryMan_id)
+           ->update($data);
+
+        Session::get('message','Delivery Man updated successfully !');
+        return Redirect::to('/all-DeliveryMan');
+    }
 
 }
