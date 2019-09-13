@@ -89,6 +89,14 @@ class DeliveryManController extends Controller
         DB::table('tbl_order')
             ->where('order_id',$order_id)
             ->update(['order_status'=>'Delivered']);
+        DB::table('tbl_order')
+            ->where('order_id',$order_id)
+            ->update(['deliveryMan_id'=> session()->get('deliveryMan_id')]);
+
+        DB::table('tbl_order_details')
+            ->where('order_id',$order_id)
+            ->update(['deliveryMan_id'=> session()->get('deliveryMan_id')]);
+
             Session::put('message','Order Delivered!');
             return Redirect::to('deliveryManOrders');
     }

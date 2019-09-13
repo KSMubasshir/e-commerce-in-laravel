@@ -95,7 +95,7 @@ class CheckoutController extends Controller
       
       $pdata=array();
       $pdata['payment_method']=$payment_gateway;
-      $pdata['payment_status']='pending';
+      $pdata['payment_status']='Pending';
       $payment_id=DB::table('tbl_payment')
              ->insertGetId($pdata);
   
@@ -105,7 +105,7 @@ class CheckoutController extends Controller
       $odata['shipping_id']=Session::get('shipping_id');
       $odata['payment_id']=$payment_id;
       $odata['order_total']=Cart::total();
-      $odata['order_status']='pending';
+      $odata['order_status']='Pending';
       $order_id=DB::table('tbl_order')
                ->insertGetId($odata);
   
