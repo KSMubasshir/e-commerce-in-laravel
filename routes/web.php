@@ -11,8 +11,8 @@
 |
 */
 //FrontEnd Site
-Route::get('/', 'HomeController@index');
-Route::get('/contactus', 'HomeController@contactus');
+Route::get('/','HomeController@index');
+Route::get('/contactus','HomeController@contactus');
 
 
 //search products
@@ -58,20 +58,21 @@ Route::post('/admin-dashboard', 'AdminController@dashboard');
 
 //delivery man routes
 Route::get('/deliveryMan', 'DeliveryManController@index');
-Route::post('/deliveryMan-dashboard', 'DeliveryManController@dashboard');
 Route::get('/deliveryManDashboard', 'SuperAdminController@deliveryManIndex');
 Route::get('/deliveryManlogout', 'SuperAdminController@deliveryManlogout');
+Route::post('/deliveryMan-dashboard', 'DeliveryManController@dashboard');
+
 Route::get('/deliveryManOrders', 'DeliveryManController@myOrders');
 Route::get('/deliveryManDeliverdOrders', 'DeliveryManController@myDeliveredOrders');
-Route::get('/inactive-delivery/{order_id}', 'DeliveryManController@inactive_delivery');
-Route::get('/active-delivery/{order_id}', 'DeliveryManController@active_delivery');
 Route::get('/view-delivery/{order_id}', 'DeliveryManController@view_delivery');
-Route::get('/delete-delivery/{order_id}', 'DeliveryManController@delete_delivery');
+Route::get('/active-delivery/{order_id}', 'DeliveryManController@active_delivery');
+
+//admin operation on delivery man
 Route::get('/add-DeliveryMan', 'DeliveryManController@add_DeliveryMan');
 Route::get('/all-DeliveryMan', 'DeliveryManController@all_DeliveryMan');
-Route::post('/save-DeliveryMan', 'DeliveryManController@save_DeliveryMan');
 Route::get('/edit-DeliveryMan/{DeliveryMan_id}', 'DeliveryManController@edit_DeliveryMan');
 Route::get('/delete-DeliveryMan/{DeliveryMan_id}', 'DeliveryManController@delete_DeliveryMan');
+Route::post('/save-DeliveryMan', 'DeliveryManController@save_DeliveryMan');
 Route::post('/update-DeliveryMan/{DeliveryMan_id}', 'DeliveryManController@update_DeliveryMan');
 
 
@@ -116,8 +117,5 @@ Route::get('/delete-slider/{slider_id}','SliderController@delete_slider');
 //order routes are here
 Route::get('/inactive-order/{order_id}','OrderController@inactive_order');
 Route::get('/active-order/{order_id}','OrderController@active_order');
-
-
-
 
 

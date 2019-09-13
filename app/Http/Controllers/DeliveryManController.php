@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Session;
 use Cart;
 use Illuminate\Support\Facades\Redirect;
+session_start();
 
 class DeliveryManController extends Controller
 {
@@ -30,6 +31,10 @@ class DeliveryManController extends Controller
                         if($result){
                             Session::put('deliveryMan_name',$result->deliveryMan_name);
                             Session::put('deliveryMan_id',$result->deliveryMan_id);
+                            session()->put('deliveryMan_id',$result->deliveryMan_id);
+
+
+                            //$_SESSION["id"] = $result->deliveryMan_id;
 
                             $all_order_info=DB::table('tbl_order')
                             ->join('tbl_customer','tbl_order.customer_id','=','tbl_customer.customer_id')
@@ -46,10 +51,13 @@ class DeliveryManController extends Controller
                         }
     }
     public function myOrders(){
+            ;
             $all_order_info=DB::table('tbl_order')
                             ->join('tbl_customer','tbl_order.customer_id','=','tbl_customer.customer_id')
                             ->select('tbl_order.*','tbl_customer.customer_name')
                             ->where('order_status','Delivered')
+                            ->where('tbl_order.deliveryMan_id', session()->get('deliveryMan_id'))
+                            //->where('tbl_order.deliveryMan_id', "3")
                             ->get();
                             $manage_order=view('pages.deliveryManDashboard')
                             ->with('all_order_info',$all_order_info);
@@ -92,13 +100,17 @@ class DeliveryManController extends Controller
               ->join('tbl_shipping','tbl_order.shipping_id','=','tbl_shipping.shipping_id')
               ->select('tbl_order.*','tbl_order_details.*','tbl_shipping.*','tbl_customer.*')
               ->where('tbl_order.order_id',$order_id)
+              ->andWhere('tbl_order.deliveryMan_id', $_SESSION['deliveryMan_id'])
+              ->andWhere('tbl_order_details.deliveryMan_id', $_SESSION['deliveryMan_id'])
               ->get();
        $view_order=view('pages.view_delivery')
                ->with('order_by_id',$order_by_id);
        return view('pages.deliveryManLayout')
-               ->with('pages..view_delivery',$view_order); 
+               ->with('pages.view_delivery',$view_order); 
   }
 
+
+  //admin opeartions on deliveryMan
   public function all_DeliveryMan(){
         $all_DeliveryMan_info = DB::table('tbl_deliveryMan')->get();
         $manage_DeliveryMan = view('admin.all_deliveryMan')
@@ -142,7 +154,7 @@ class DeliveryManController extends Controller
       DB::table('tbl_deliveryMan')
           ->where('deliveryMan_id',$deliveryMan_id)
           ->delete();
-      Session::get('message','Delivery Man Deleted successfully! ');
+      Session::put('message','Delivery Man Deleted successfully! ');
       return Redirect::to('/all-DeliveryMan');    
     }
     public function edit_DeliveryMan($deliveryMan_id)
@@ -171,7 +183,7 @@ class DeliveryManController extends Controller
            ->where('deliveryMan_id',$deliveryMan_id)
            ->update($data);
 
-        Session::get('message','Delivery Man updated successfully !');
+        Session::put('message','Delivery Man updated successfully !');
         return Redirect::to('/all-DeliveryMan');
     }
 
