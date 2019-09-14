@@ -9,6 +9,7 @@ use Auth;
 use Session;
 use Cart;
 use Illuminate\Support\Facades\Redirect;
+session_start();
 class CheckoutController extends Controller
 {
     public function login_check()
@@ -25,23 +26,24 @@ class CheckoutController extends Controller
       $data['mobile_number']=$request->mobile_number;
 
         $customer_id=DB::table('tbl_customer')
-                     ->insertGetId($data);
+                    ->insertGetId($data);
 
                Session::put('customer_id',$customer_id);
                Session::put('customer_name',$request->customer_name);
+               session()->put('customer_id',$customer_id);
                return Redirect('/checkout');      
 
     }
 
     public function checkout()
     {
-      
-    	$result=DB::table('tbl_customer')
-              ->where('customer_id',"1")
-              ->first();
+       $customer_info=DB::table('tbl_customer')
+                     ->select('tbl_customer.*')
+                     ->where('tbl_customer.customer_id', session()->get('customer_id'));
+       $_SESSION['customer_info'] = $customer_info;
+       //return view('layout')
+              //->with('pages.checkout',$customer_info);
       return view('pages.checkout');
-
-
     }
 
     public function save_shipping_details(Request $request)
@@ -70,13 +72,11 @@ class CheckoutController extends Controller
               ->where('customer_email',$customer_email)
               ->where('password',$password)
               ->first();
-
              if ($result) {
-               
                Session::put('customer_id',$result->customer_id);
+               session()->put('customer_id',$result->customer_id);
                return Redirect::to('/checkout');
              }else{
-                
                 return Redirect::to('/login-check');
              }
     }
@@ -89,9 +89,6 @@ class CheckoutController extends Controller
     public function order_place(Request $request)
     {
       $payment_gateway=$request->payment_method;
-
-      // $total=Cart::total();
-      // echo $total;
       
       $pdata=array();
       $pdata['payment_method']=$payment_gateway;
@@ -99,7 +96,6 @@ class CheckoutController extends Controller
       $payment_id=DB::table('tbl_payment')
              ->insertGetId($pdata);
   
-
       $odata=array();
       $odata['customer_id']=Session::get('customer_id');
       $odata['shipping_id']=Session::get('shipping_id');
@@ -128,14 +124,13 @@ class CheckoutController extends Controller
      if ($payment_gateway=='handcash') {
           Cart::destroy();
           return view('pages.handcash');
-     }elseif ($payment_gateway=='cart') {
-          echo "cart";
+     }elseif ($payment_gateway=='card') {
+          echo "card";
      }elseif($payment_gateway=='paypal'){
           echo "paypal";
      }else{
           echo "not selectd";
      }
-
     }
 
     public function manage_order()
@@ -154,7 +149,6 @@ class CheckoutController extends Controller
     }
     public function new_order()
     {
-     
       $all_order_info=DB::table('tbl_order')
                      ->join('tbl_customer','tbl_order.customer_id','=','tbl_customer.customer_id')
                      ->select('tbl_order.*','tbl_customer.customer_name')
@@ -168,7 +162,6 @@ class CheckoutController extends Controller
                ->with('all_order_info',$all_order_info);
        return view('pages.adminLayout')
                ->with('admin.new_order',$new_order); 
-
     }
 
   public function view_order($order_id)
@@ -182,23 +175,13 @@ class CheckoutController extends Controller
               ->get();
 
        $view_order=view('admin.view_order')
-               ->with('order_by_id',$order_by_id);
+              ->with('order_by_id',$order_by_id);
        return view('pages.adminLayout')
-               ->with('admin.view_order',$view_order); 
-
-                     // echo "<pre>";
-                     //  print_r($order_by_id);
-                     // echo "</pre>";
-
+              ->with('admin.view_order',$view_order); 
   }
-  
-
     public function customer_logout()
     {
       Session::flush();
       return Redirect::to('/');
     }
-
-
-    
 }

@@ -66,7 +66,7 @@
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="#">Chattogram</a></li>
+									<li><a href="#">Chottogram</a></li>
 									<li><a href="#">Sylhet</a></li>
 								</ul>
 							</div>
@@ -85,11 +85,18 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="{{URL::to('/customer-profile')}}"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<?php $customer_id=Session::get('customer_id');
                       			$shipping_id=Session::get('shipping_id');
                 				?>
+                				<?php if($customer_id != NULL){?>
+                          			<li><a href="{{URL::to('/customer-profile')}}"><i class="btn btn-default check_out">Account</i></a>
+                          			</li>
+                      			<?php  }else{?>
+                             	<li><a class="btn btn-default check_out" href="{{URL::to('/login-check1')}}">Account</a></li>
+                        		<?php } ?>
+								
+								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+								
 
 			                     <?php if($customer_id ==NULL && $shipping_id==NULL){?>
 			                            <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>

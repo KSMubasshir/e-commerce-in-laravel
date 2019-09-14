@@ -6,7 +6,6 @@
 			<div class="register-req">
 				<p>Please fillup this form............</p>
 			</div><!--/register-req-->
-
 			<div class="shopper-informations">
 				<div class="row">
 					<div class="col-sm-12 clearfix">
@@ -30,7 +29,4 @@
 			</div>
 		</div>
 	</section> <!--/#cart_items-->
-
-
-
 @endsection

@@ -11,15 +11,49 @@ use Illuminate\Support\Facades\Redirect;
 class CustomerController extends Controller
 {
 	public function index(){
-        return view('pages.login');
+        return view('pages.deliveryManDashboard');
+    }
+    public function login_check()
+    {
+      return view('pages.login1');
     }
     public function showDashboard(){
         return view('pages.deliveryManDashboard');
     }
 
+    public function customer_login(Request $request)
+    {
+      $customer_email=$request->customer_email;
+      $password=md5($request->password);
+      $result=DB::table('tbl_customer')
+              ->where('customer_email',$customer_email)
+              ->where('password',$password)
+              ->first();
+             if ($result) {
+               Session::put('customer_id',$result->customer_id);
+               session()->put('customer_id',$result->customer_id);
+               return Redirect::to('/customer-profile');
+             }else{
+                return Redirect::to('/login-check');
+             }
+    }
+
+    public function customer_registration(Request $request)
+    {
+      $data=array();
+      $data['customer_name']=$request->customer_name;
+      $data['customer_email']=$request->customer_email;
+      $data['password']=md5($request->password);
+      $data['mobile_number']=$request->mobile_number;
+        $customer_id=DB::table('tbl_customer')
+                    ->insertGetId($data);
+               Session::put('customer_id',$customer_id);
+               Session::put('customer_name',$request->customer_name);
+               session()->put('customer_id',$customer_id);
+               return Redirect('/customer-profile');
+    }
+
     public function dashboard(Request $request){
-
-
         $deliveryMan_email = $request->deliveryMan_email ;
         $deliveryMan_password = md5($request->deliveryMan_password) ;
         $result = DB::table('tbl_deliveryMan')

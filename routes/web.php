@@ -29,11 +29,14 @@ Route::get('/delete-to-cart/{rowId}','CartController@delete_to_cart');
 Route::post('/update-cart','CartController@update_cart');
 //checkout routes are here======
 Route::get('/login-check','CheckoutController@login_check');
+Route::get('/login-check1','CustomerController@login_check');
 Route::post('/customer_registration','CheckoutController@customer_registration');
+Route::post('/customer_registration1','CustomerController@customer_registration');
 Route::get('/checkout','CheckoutController@checkout');
 Route::post('/save-shipping-details','CheckoutController@save_shipping_details');
 //customer login and logout are here------------------------------------
 Route::post('/customer_login','CheckoutController@customer_login');
+Route::post('/customer_login1','CustomerController@customer_login');
 Route::get('/customer_logout','CheckoutController@customer_logout');
 
 Route::get('/customer-profile','CustomerController@index');
