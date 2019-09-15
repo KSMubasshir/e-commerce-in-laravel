@@ -20,8 +20,6 @@ class DeliveryManController extends Controller
     }
 
     public function dashboard(Request $request){
-
-
         $deliveryMan_email = $request->deliveryMan_email ;
         $deliveryMan_password = md5($request->deliveryMan_password) ;
         $result = DB::table('tbl_deliveryMan')
