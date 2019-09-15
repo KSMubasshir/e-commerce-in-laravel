@@ -54,7 +54,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"><span>Metro</span></a>
+				<a class="brand" href="{{URL::to('/')}}"><span>Home</span></a>
 								
 				<!-- start: Header Menu -->
 				<div class="nav-no-collapse header-nav">
@@ -316,7 +316,7 @@
 								<li class="dropdown-menu-title">
  									<span>Account Settings</span>
 								</li>
-								<li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
+								<li><a href="{{URL::to('/customer-profile')}}"><i class="halflings-icon user"></i> Profile</a></li>
 								<li><a href="{{URL::to('/customer_logout')}}"><i class="halflings-icon off"></i> Logout</a></li>
 							</ul>
 						</li>
@@ -337,9 +337,11 @@
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li><a href="{{URL::to('/customerOrders')}}"><i class="icon-list-alt"></i><span class="hidden-tablet"> My Orders</span></a></li>
+						<li><a href="{{URL::to('/wishlist')}}"><i class="icon-list-alt"></i><span class="hidden-tablet"> Wishlist</span></a></li></a></li>
 					</ul>
 				</div>
 			</div>
+
 			<!-- end: Main Menu -->
 
 

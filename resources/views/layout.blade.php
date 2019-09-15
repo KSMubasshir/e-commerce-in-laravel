@@ -89,21 +89,21 @@
                       			$shipping_id=Session::get('shipping_id');
                 				?>
                 				<?php if($customer_id != NULL){?>
-                          			<li><a href="{{URL::to('/customer-profile')}}"><i class="btn btn-default check_out">Account</i></a>
+                          			<li><a href="{{URL::to('/customer-profile')}}"><i class="fa fa-user"> Account</i></a>
                           			</li>
                       			<?php  }else{?>
-                             	<li><a class="btn btn-default check_out" href="{{URL::to('/login-check1')}}">Account</a></li>
+                             	<li><a href="{{URL::to('/login-check1')}}"><i class="fa fa-user"> Account</i></a></li>
                         		<?php } ?>
 								
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								
 
 			                     <?php if($customer_id ==NULL && $shipping_id==NULL){?>
-			                            <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+			                            <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-shopping-cart"></i> Checkout</a></li>
 			                        <?php }if($customer_id !=NULL && $shipping_id==NULL){?>
-			                              <li><a href="{{URL::to('/checkout')}}">Checkout</a></li>
+			                              <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-shopping-cart"></i> Checkout</a></li>
 			                        <?php }if($customer_id !=NULL && $shipping_id!=NULL){?>
-			                               <li><a href="{{URL::to('/payment')}}">Checkout</a></li>
+			                               <li><a href="{{URL::to('/payment')}}"> Checkout</a></li>
 			                        <?php }else{}?>
 
 

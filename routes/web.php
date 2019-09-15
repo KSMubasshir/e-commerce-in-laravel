@@ -13,6 +13,7 @@
 //FrontEnd Site
 Route::get('/','HomeController@index');
 Route::get('/contactus','HomeController@contactus');
+Route::get('/wishlist','CustomerController@wishlist');
 
 
 //search products
@@ -34,6 +35,7 @@ Route::post('/customer_registration','CheckoutController@customer_registration')
 Route::post('/customer_registration1','CustomerController@customer_registration');
 Route::get('/checkout','CheckoutController@checkout');
 Route::post('/save-shipping-details','CheckoutController@save_shipping_details');
+Route::get('/customerOrders','CustomerController@my_orders');
 //customer login and logout are here------------------------------------
 Route::post('/customer_login','CheckoutController@customer_login');
 Route::post('/customer_login1','CustomerController@customer_login');
@@ -68,6 +70,7 @@ Route::post('/deliveryMan-dashboard', 'DeliveryManController@dashboard');
 Route::get('/deliveryManOrders', 'DeliveryManController@myOrders');
 Route::get('/deliveryManDeliverdOrders', 'DeliveryManController@myDeliveredOrders');
 Route::get('/view-delivery/{order_id}', 'DeliveryManController@view_delivery');
+Route::get('/view-delivery1/{order_id}', 'CustomerController@view_delivery');
 Route::get('/active-delivery/{order_id}', 'DeliveryManController@active_delivery');
 
 //admin operation on delivery man

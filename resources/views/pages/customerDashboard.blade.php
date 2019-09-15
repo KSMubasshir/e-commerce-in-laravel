@@ -41,7 +41,7 @@
                         <td class="center">{{ $v_order->order_status }}</td>
 						
 						<td class="center">
-							<a class="btn btn-info" href="{{URL::to('/view-delivery/'.$v_order->order_id)}}">
+							<a class="btn btn-info" href="{{URL::to('/view-delivery1/'.$v_order->order_id)}}">
 								<i class="halflings-icon white edit"></i>  
 							</a>
 						</td>

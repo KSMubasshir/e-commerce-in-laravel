@@ -62,16 +62,16 @@ class CustomerController extends Controller
                return Redirect('/customer-profile');
     }
 
-    public function myOrders(){
+    public function my_orders(){
             $all_order_info=DB::table('tbl_order')
-                            ->join('tbl_customer','tbl_order.customer_id','=','tbl_customer.customer_id')
-                            ->select('tbl_order.*','tbl_customer.customer_name')
-                            ->where('order_status','Delivered')
-                            ->get();
-                            $manage_order=view('pages.deliveryManDashboard')
-                            ->with('all_order_info',$all_order_info);
-                            return view('pages.deliveryManLayout')
-                            ->with('pages.deliveryManDashboard',$manage_order);                  
+            ->join('tbl_customer','tbl_order.customer_id','=','tbl_customer.customer_id')
+            ->select('tbl_order.*','tbl_customer.customer_name')
+            ->where('tbl_customer.customer_id',session()->get('customer_id'))
+            ->get();
+            $manage_order=view('pages.customerDashboard')
+            ->with('all_order_info',$all_order_info);
+            return view('pages.customerLayout')
+            ->with('pages.customerDashboard',$manage_order);                  
     }
     
      public function view_delivery($order_id){
@@ -82,9 +82,22 @@ class CustomerController extends Controller
               ->select('tbl_order.*','tbl_order_details.*','tbl_shipping.*','tbl_customer.*')
               ->where('tbl_order.order_id',$order_id)
               ->get();
-       $view_order=view('pages.view_delivery')
+       $view_order=view('pages.view_delivery1')
                ->with('order_by_id',$order_by_id);
-       return view('pages.deliveryManLayout')
-               ->with('pages..view_delivery',$view_order); 
+       return view('pages.customerLayout')
+               ->with('pages.view_delivery1',$view_order); 
      }
+     public function all_wishlist()
+      {
+       $all_wishlist_info=DB::table('tbl_wishlist')
+                     ->join('tbl_category','tbl_wishlist.category_id','=','tbl_category.category_id')
+                     ->join('tbl_manufacture','tbl_wishlist.manufacture_id','=','tbl_manufacture.manufacture_id')
+                     ->select('tbl_wishlist.*','tbl_category.category_name','tbl_manufacture.manufacture_name')
+                     ->get();
+       $manage_wishlist=view('pages.wishlist')
+               ->with('all_wishlist_info',$all_wishlist_info);
+       return view('pages.customerLayout')
+               ->with('pages.wishlist',$manage_wishlist); 
+                       
+   }
 }
