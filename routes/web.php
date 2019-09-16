@@ -14,7 +14,7 @@
 Route::get('/','HomeController@index');
 Route::get('/contactus','HomeController@contactus');
 Route::get('/wishlist','CustomerController@wishlist');
-
+Route::get('/delete-from-wishlist/{product_id}','CustomerController@delete_wishlist_item');
 
 //search products
 Route::post('/search','HomeController@show_product_by_search');

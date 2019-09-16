@@ -87,7 +87,7 @@ class CustomerController extends Controller
        return view('pages.customerLayout')
                ->with('pages.view_delivery1',$view_order); 
      }
-     public function all_wishlist()
+     public function wishlist()
       {
        $all_wishlist_info=DB::table('tbl_wishlist')
                      ->join('tbl_category','tbl_wishlist.category_id','=','tbl_category.category_id')
@@ -100,4 +100,12 @@ class CustomerController extends Controller
                ->with('pages.wishlist',$manage_wishlist); 
                        
    }
+   public function delete_wishlist_item($product_id)
+    {  
+      DB::table('tbl_wishlist')
+          ->where('product_id',$product_id)
+          ->delete();
+      Session::get('message','Wishlisted Item Deleted successfully! ');
+      return Redirect::to('/wishlist');
+    }
 }
